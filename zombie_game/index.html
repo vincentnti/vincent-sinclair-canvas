@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zombie Game</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans&display=swap" rel="stylesheet"> 
+</head>
+<body style="background-image: url(./imgs/backdrop.jpg); background-size: cover;">
+    <!--Player Spries-->
+    <img src="imgs/Player/sprite_0.png" id="player_0">
+    <img src="imgs/Player/sprite_1.png" id="player_1">
+    <img src="imgs/Player/sprite_2.png" id="player_2">
+
+    <!--Zombie Sprites-->
+    <img src="imgs/Zombie/zombie0.png" id="zombie_0">
+    <img src="imgs/Zombie/zombie1.png" id="zombie_1">
+    <img src="imgs/Zombie/zombie2.png" id="zombie_2">
+    
+    <!--Game-->
+    <div class="game">
+        <canvas id=gameCanvas width="1080px" height="720px"></canvas> 
+    </div>
+    <script type="module" src="./dist/main.js"></script>
+
+    <!--Info-->
+    <div class="info">
+        <p>Vincent Sinclair TE19C<br>
+            Gå med piltangenter, Spacebar för Instakill, Akta dig för Spawning Zombies<br>
+        Krav<br>Menu: Game Over Screen<br>Spacebar: Instakill<br>Grafik: Ja</p>
+    </div>
+    
+</body>
+</html>
