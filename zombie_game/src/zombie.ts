@@ -3,14 +3,15 @@ import { Draw } from "./draw_utilities.js";
 export class Zombie {
     x = 0;
     y = 0;
-    speed = (Math.random() * 1.6) + 1; 
+    speed = 0; 
     width = 50;
 
+    // Spawn zombie object with random values
     constructor () {
-        // Speed
+        // Calculate speed
         this.speed = (Math.random() * 1.65) + 0.1; 
 
-        // Spawn Location
+        // Set spawn location
         switch (Math.floor((Math.random() * 4) + 1)) {
             case 1:
                 this.x = -this.width;
@@ -30,14 +31,15 @@ export class Zombie {
         }
     }
 
+    // Draw zombie object
     draw_self () {
         let draw = new Draw();
 
         draw.in_color('red');
-        //draw.rectangle(this.x, this.y, this.width, this.width);
         draw.image(document.getElementById("zombie_0"), this.x - 25, this.y - 15, 100, 100)
     }
 
+    // Zombie movement
     self_update(player_x: number, player_y: number) { // rename to self update?
         //Simple player follow
         if (this.x < player_x) {

@@ -4,9 +4,14 @@ import { Input } from "./input_manager.js";
 import { Zombie } from "./zombie.js";
 
 export class Game {
+
+    // Game settings
     FPS = 60;
     score = 0;
     instakill_used = false;
+    draw_update = 0;
+    count = 0;
+    spawn_count = 200;
 
     // Characters
     player = new Player(); 
@@ -16,11 +21,8 @@ export class Game {
     draw = new Draw();  
     input = new Input();
 
-    // Would like to access these in some other way
-    draw_update = 0; // Used for stopping the game
-
     start () {
-        // Init game loops
+        // Initiialize game loop
         setInterval(this.game_update.bind(this), 1000 / this.FPS);
         this.draw_update = setInterval(this.game_draw.bind(this), 1000 / this.FPS);
     }
@@ -28,15 +30,15 @@ export class Game {
     game_draw() {
         this.draw.clear_screen();
 
-        // Player
+        // Draw player
         this.player.draw_self();
 
-        // Zombies
+        // Draw zombies
         this.zombies.forEach(zombie => {
             zombie.draw_self();
         });
 
-        // UI
+        // Draw UI
         this.score++;
         this.draw.write("Score: " + this.score, "#fff", 28,50)
         this.draw.write("Zombies: " + this.zombies.length, "#fc440f", 28, 90)
@@ -45,11 +47,8 @@ export class Game {
         }
     }
 
-    count = 0;
-    spawn_count = 200;
     game_update() {
-
-        // Zombie Spawner
+        // Zombie spawner
         this.count++; 
         if (this.count > this.spawn_count && this.spawn_count > 0) {
             this.zombies.push(new Zombie)
@@ -58,13 +57,13 @@ export class Game {
             this.spawn_count -= 1;
         }
 
-        // Input
+        // Handle player input
         this.input.check_key_presses()
         
-        // Player
+        // Update player position
         this.player.self_update(this.input.keys_down)
 
-        // Extra Functionality Spacebar
+        // Extra functionality for spacebar: Instakill
         if (this.input.keys_down[" "] && !this.instakill_used) {
             this.instakill_used = true;
             this.zombies = []
@@ -79,16 +78,16 @@ export class Game {
     }
 
     game_over () {
-        // Stopping the game
+        // Stop the game loop
         clearInterval(this.draw_update);
 
-        // Drawing Game Over screen
+        // Draw game over screen
         this.draw.clear_screen()
         this.draw.write("Game Over!", "#fc440f", 450,350);
         this.draw.write("Score: " + this.score, "#1effbc", 450, 400);
         this.draw.write("Press Enter to try again!", "#b4e33d", 450, 450)
 
-        //Check for Enter keypress and reload
+        // Watch for Enter keypress and reload
         if (this.input.keys_down.Enter) {
             window.location.reload()
         }

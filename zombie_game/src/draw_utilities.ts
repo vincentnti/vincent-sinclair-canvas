@@ -6,6 +6,7 @@ export class Draw {
     constructor () {
         context.imageSmoothingEnabled = false; // Disable AA
     }
+    
     clear_screen () {
         this.in_color('#7C9299');
         context.fillRect(0, 0, canvas.width, canvas.height);

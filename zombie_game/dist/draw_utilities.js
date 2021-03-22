@@ -2,7 +2,7 @@ const canvas = document.getElementById('gameCanvas');
 const context = canvas.getContext('2d');
 export class Draw {
     constructor() {
-        context.imageSmoothingEnabled = false;
+        context.imageSmoothingEnabled = false; // Disable AA
     }
     clear_screen() {
         this.in_color('#7C9299');

@@ -1,5 +1,6 @@
 import { Game } from './game.js';
+(function () {
+    let game = new Game();
 
-let game = new Game(); //This works though
-
-game.start();
+    game.start();
+})();

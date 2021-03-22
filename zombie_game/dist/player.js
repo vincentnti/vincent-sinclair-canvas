@@ -6,12 +6,15 @@ export class Player {
         this.width = 50;
         this.speed = 6;
     }
+    // Draw player object
     draw_self() {
         let draw = new Draw();
         draw.in_color('white');
         draw.image(document.getElementById("player_0"), this.x - 25, this.y - 15, 100, 100);
     }
+    // Update player position
     self_update(key) {
+        // No going outside borders
         if (this.x > 1080 - this.width) {
             this.x = 1080 - this.width;
         }
@@ -24,6 +27,7 @@ export class Player {
         else if (this.y < 0) {
             this.y = 0;
         }
+        // Player movement
         if (key.ArrowUp) {
             this.y -= this.speed;
         }

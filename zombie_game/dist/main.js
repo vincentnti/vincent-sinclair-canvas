@@ -1,3 +1,5 @@
 import { Game } from './game.js';
-let game = new Game();
-game.start();
+(function () {
+    let game = new Game();
+    game.start();
+})();

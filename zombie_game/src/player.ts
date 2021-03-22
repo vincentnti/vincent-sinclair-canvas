@@ -4,19 +4,20 @@ export class Player {
     x = 500;
     y = 330;
     width = 50;
-    speed = 6; //?
+    speed = 6;
 
+    // Draw player object
     draw_self() {
         let draw = new Draw();
 
         draw.in_color('white');
-        //draw.rectangle(this.x, this.y, this.width, this.width); //Body
         draw.image(document.getElementById("player_0"), this.x - 25, this.y-15, 100, 100)
     }
 
-    self_update(key: any) { // rename to self update?
+    // Update player position
+    self_update(key: any) {
         
-        // No going outside borders - this will be moved to game.ts
+        // No going outside borders
         if (this.x > 1080 - this.width) {
             this.x = 1080 - this.width;
         }
@@ -31,7 +32,7 @@ export class Player {
             this.y = 0
         }
 
-        // Moving
+        // Player movement
         if (key.ArrowUp) {
             this.y -= this.speed;
         }
