@@ -6,9 +6,9 @@ import { Zombie } from "./zombie.js";
 /*
     Game hanterar alla spel relaterad logik.
     Det har till exempel koll på positioner, fps, score och andra saker
-    t.ex en player inte behöver ha koll på.
-    detta är därför zombies collsion hanteras här ute då alal zombies inte bör ha koll på alla zombies position.
-    Game hanterar även som en station där funktioner och metoder anropas för att påverka andra saker såsom en player som påverkas av input.
+    t.ex en player behöver inte ha koll på själva tangent tryckandet.
+    Detta är därför zombies collsion hanteras här ute då alal zombies inte bör ha koll på alla zombies position.
+    Game fungerar även som en station där funktioner och metoder anropas för att påverka andra saker såsom en player som påverkas av input.
 */
 
 export class Game {
